@@ -8,8 +8,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV ROS_DISTRO=jazzy
+ENV RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
+
 
 # Configure locale and install tools needed to add the ROS repository.
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -33,6 +35,7 @@ RUN install -m 0755 -d /etc/apt/keyrings \
 # Install ROS 2 Jazzy and Tutorial 6 dependencies.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-jazzy-ros-base \
+    ros-jazzy-rmw-fastrtps-cpp \
     ros-jazzy-xacro \
     ros-jazzy-ur-description \
     ros-jazzy-robot-state-publisher \
