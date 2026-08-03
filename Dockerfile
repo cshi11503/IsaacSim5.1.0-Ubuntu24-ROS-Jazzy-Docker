@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-jazzy-joint-state-publisher-gui \
     ros-jazzy-rviz2 \
     ros-jazzy-rqt-graph \
+    ros-jazzy-ackermann-msgs \
     && rm -rf /var/lib/apt/lists/*
 
 # Automatically source ROS 2 in Bash terminals.
