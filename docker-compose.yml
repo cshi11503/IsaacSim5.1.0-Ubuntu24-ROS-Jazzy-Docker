@@ -1,0 +1,41 @@
+services:
+  isaac-sim:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+
+    image: casey-isaacsim:tutorial6-jazzy
+    container_name: casey_tutorial6
+
+    runtime: nvidia
+
+    environment:
+      ACCEPT_EULA: "Y"
+      PRIVACY_CONSENT: "Y"
+      NVIDIA_VISIBLE_DEVICES: "all"
+      NVIDIA_DRIVER_CAPABILITIES: "all"
+      RMW_IMPLEMENTATION: "rmw_fastrtps_cpp"
+
+    network_mode: host
+    ipc: host
+
+    security_opt:
+      - label=disable
+
+    user: "1234:1234"
+
+    working_dir: /isaac-sim
+
+    volumes:
+      - /home/cshi30/Documents/isaac-workspace:/isaac-sim/workspace
+
+    entrypoint:
+      - /isaac-sim/runheadless.sh
+
+    command:
+      - /bin/bash
+
+    stdin_open: true
+    tty: true
+
+    restart: "no"
