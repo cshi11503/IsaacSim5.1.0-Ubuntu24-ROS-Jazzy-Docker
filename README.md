@@ -1,2 +1,2 @@
 # IsaacSim-ROS-Docker-env
-Docker environment and setup for NVIDIA Isaac Sim, ROS 2, and robotics development.
+A Docker-based development environment for running NVIDIA Isaac Sim 6.0.1 with ROS 2 Jazzy.
