@@ -1,7 +1,8 @@
 ARG ISAAC_SIM_VERSION=5.1.0
-ARG ROS_DISTRO=jazzy
+
 FROM nvcr.io/nvidia/isaac-sim:${ISAAC_SIM_VERSION}
 
+ARG ROS_DISTRO=jazzy
 USER root
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
