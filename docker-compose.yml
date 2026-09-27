@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+      args:
+        ISAAC_SIM_VERSION: ${ISAAC_SIM_VERSION}
+        ROS_DISTRO: ${ROS_DISTRO}
 
     image: casey-isaacsim:tutorial6-jazzy
     container_name: casey_tutorial6

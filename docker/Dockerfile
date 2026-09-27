@@ -1,13 +1,13 @@
-ARG ISAACSIM_VERSION=6.0.1
 
-FROM nvcr.io/nvidia/isaac-sim:${ISAACSIM_VERSION}
+
+FROM nvcr.io/nvidia/isaac-sim:${ISAAC_SIM_VERSION}
 
 USER root
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV ROS_DISTRO=jazzy
+ENV ROS_DISTRO=${ROS_DISTRO}
 ENV RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
@@ -33,22 +33,22 @@ RUN install -m 0755 -d /etc/apt/keyrings \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo ${VERSION_CODENAME}) main" \
        > /etc/apt/sources.list.d/ros2.list
 
-# Install ROS 2 Jazzy and Tutorial 6 dependencies.
+# Install ROS 2 dependencies for the selected ROS distro.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-jazzy-ros-base \
-    ros-jazzy-rmw-fastrtps-cpp \
-    ros-jazzy-xacro \
-    ros-jazzy-ur-description \
-    ros-jazzy-robot-state-publisher \
-    ros-jazzy-joint-state-publisher \
-    ros-jazzy-joint-state-publisher-gui \
-    ros-jazzy-rviz2 \
-    ros-jazzy-rqt-graph \
-    ros-jazzy-ackermann-msgs \
+    ros-${ROS_DISTRO}-ros-base \
+    ros-${ROS_DISTRO}-rmw-fastrtps-cpp \
+    ros-${ROS_DISTRO}-xacro \
+    ros-${ROS_DISTRO}-ur-description \
+    ros-${ROS_DISTRO}-robot-state-publisher \
+    ros-${ROS_DISTRO}-joint-state-publisher \
+    ros-${ROS_DISTRO}-joint-state-publisher-gui \
+    ros-${ROS_DISTRO}-rviz2 \
+    ros-${ROS_DISTRO}-rqt-graph \
+    ros-${ROS_DISTRO}-ackermann-msgs \
     && rm -rf /var/lib/apt/lists/*
 
 # Automatically source ROS 2 in Bash terminals.
-RUN echo "source /opt/ros/jazzy/setup.bash" >> /etc/bash.bashrc
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /etc/bash.bashrc
 
 # Use the standard non-root Isaac Sim container user.
 USER 1234:1234
