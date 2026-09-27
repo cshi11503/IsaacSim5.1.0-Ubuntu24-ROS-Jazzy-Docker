@@ -30,7 +30,7 @@ services:
     working_dir: /isaac-sim
 
     volumes:
-      - /home/cshi30/Documents/isaac-workspace:/isaac-sim/workspace
+      - /home/cshi30/ACE_Lab/VLM_Drone_project
 
     entrypoint:
       - /isaac-sim/runheadless.sh
