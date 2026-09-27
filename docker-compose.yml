@@ -7,7 +7,7 @@ services:
         ISAAC_SIM_VERSION: ${ISAAC_SIM_VERSION}
         ROS_DISTRO: ${ROS_DISTRO}
 
-    image: casey-isaacsim:tutorial6-jazzy
+    image: casey-isaacsim:5.1.0-jazzy-ubuntu24
     container_name: casey_tutorial6
 
     runtime: nvidia
