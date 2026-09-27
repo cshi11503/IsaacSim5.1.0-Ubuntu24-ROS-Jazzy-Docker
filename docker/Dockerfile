@@ -1,4 +1,5 @@
-
+ISAAC_SIM_VERSION=5.1.0
+ROS_DISTRO=jazzy
 
 FROM nvcr.io/nvidia/isaac-sim:${ISAAC_SIM_VERSION}
 
